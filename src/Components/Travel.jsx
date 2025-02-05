@@ -1,11 +1,16 @@
 import React from "react";
 import "./travel.css";
 import travelPlansData from "../assets/travel-plans.json";
+import { useState } from "react";
 function Travel() {
+  const [destination, setestination] = useState(travelPlansData);
+  const deletedestination = () => {
+    console.log("deleted");
+  };
   return (
     <div className="Travel">
       <h2>Travel Plan </h2>
-      {travelPlansData.map((plans) => {
+      {destination.map((plans) => {
         return (
           <div key={plans.id}>
             <h3>{plans.destination}</h3>
@@ -15,7 +20,7 @@ function Travel() {
             <span className="image-container">
               <img src={plans.image} alt="destination image" />
             </span>
-            <button >Delete</button>
+            <button onClick={deletedestination}>Delete</button>
           </div>
         );
       })}
